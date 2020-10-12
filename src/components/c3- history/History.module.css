@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    justify-content: center;
+
+
+}
+
+.item {
+    margin: 30px;
+
+}
+
+.item p {
+    margin: 0;
+    padding: 10px;
+}

@@ -1,0 +1,15 @@
+.appWrapper {
+    display: grid;
+    margin: 0 auto;
+    grid-template-areas:"h" "c";
+
+    grid-template-rows: 70px 1fr;
+
+}
+
+.appWrapperContent {
+    grid-area: c;
+    text-align: center;
+
+}
+
