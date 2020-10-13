@@ -1,8 +1,7 @@
 import React, {useEffect} from 'react';
 import style from './History.module.css'
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {getHistoryWeather} from '../../redux/weather-Reducer';
-import {AppStateType} from '../../redux/store';
 
 export default function History() {
 
