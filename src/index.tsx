@@ -4,10 +4,14 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import {HashRouter} from 'react-router-dom';
 import App from './components/App';
+import {Provider} from 'react-redux';
+import {store} from './redux/store';
 
 render(
   <HashRouter>
+    <Provider store={store}>
       <App/>
+    </Provider>
   </HashRouter>,
   document.getElementById('root')
 );

@@ -1,12 +1,17 @@
 import React, {ChangeEvent, useState} from 'react';
 import TextField from '@material-ui/core/TextField';
+import {useDispatch} from 'react-redux';
+import {getCityWeather} from '../../../redux/weather-Reducer';
 
 export default function Search() {
+  const dispatch = useDispatch();
+
+
 
   const [city, setCity] = useState('')
 
   const getWeatherInCity = () => {
-    alert(city)
+    dispatch(getCityWeather(city))
     setCity('')
   }
 
