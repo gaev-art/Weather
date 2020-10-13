@@ -1,4 +1,4 @@
-export type temp = {
+export type Main = {
   temp: number
   feels_like: number
   temp_min: number
@@ -7,7 +7,7 @@ export type temp = {
   humidity: number
 }
 
-export type sys = {
+export type Sys = {
   type: number
   id: number
   message: number
@@ -15,48 +15,34 @@ export type sys = {
   sunrise: number
   sunset: number
 }
-export type weather = {
+export type Weather = {
   id: number
   main: string
   description: string
   icon: string
 }
 
-// export type Weather = {
-//   coord: {
-//     lon: number
-//     lat: number
-//   },
-//   weather: Array<weather>,
-//   base: string
-//   main: {
-//     temp: number
-//     feels_like: number
-//     temp_min: number
-//     temp_max: number
-//     pressure: number
-//     humidity: number
-//   },
-//   visibility: number
-//   wind: {
-//     speed: number
-//     deg: number
-//   },
-//   clouds: {
-//     all: number
-//   },
-//   dt: number
-//   sys: {
-//     type: number
-//     id: number
-//     message: number
-//     country: string
-//     sunrise: number
-//     sunset: number
-//   },
-//   timezone: number
-//   id: number
-//   name: string
-//   cod: number
-// }
-//
+export type LocationWeather = {
+  coord: {
+    lon: number
+    lat: number
+  },
+  weather: [Weather],
+  base: string
+  main: Main,
+  visibility: number
+  wind: {
+    speed: number
+    deg: number
+  },
+  clouds: {
+    all: number
+  },
+  dt: number
+  sys: Sys,
+  timezone: number
+  id: number
+  name: string
+  cod: number
+}
+

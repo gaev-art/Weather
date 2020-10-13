@@ -1,15 +1,15 @@
 .container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 
 }
 
 .item {
-    margin: 30px;
+  margin: 30px;
 
 }
 
 .item p {
-    margin: 0;
-    padding: 10px;
+  margin: 0;
+  padding: 10px;
 }

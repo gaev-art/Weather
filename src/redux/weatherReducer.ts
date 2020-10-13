@@ -1,45 +1,55 @@
-import {getWeatherApi, jsonServerApi} from '../api/Weather-api';
+import {getWeatherApi, jsonServerApi} from '../api/weatherApi';
 import {Dispatch} from 'redux';
-import {sys, temp, weather} from '../types/entities';
+import {Sys, Main, Weather} from '../types/entities';
 import {InferActionTypes} from './store';
 
 
 const SET_WEATHER_DATA = 'SET_WEATHER_DATA'
 const SET_WEATHER_HISTORY = 'SET_WEATHER_HISTORY'
 
+type datesInfo = {
+  year: number
+  month: number
+  day: number
+  hours: number
+  minutes: number
+  id: number
+}
+
 type WeatherHistory = {
-  weather:  Array<weather>,
-  name:  string,
-  sys:  sys,
-  temp:  temp,
+  weather: Array<Weather>,
+  name: string,
+  sys: Sys,
+  main: Main,
+  datesInfo: datesInfo
 }
 
 
 const initialState = {
-  weather: [] as Array<weather>,
+  weather: [] as Weather[],
   name: '' as string,
-  sys: {} as sys,
-  temp: {} as temp,
-  weatherHistory:[] as Array<WeatherHistory>
+  sys: {} as Sys,
+  temp: {} as Main,
+  weatherHistory: [] as WeatherHistory[]
 };
 
 type InitialStateType = typeof initialState
 
-export const WeatherReducer = (state = initialState, action: ActionsType):InitialStateType => {
+export const weatherReducer = (state = initialState, action: ActionsType): InitialStateType => {
   switch (action.type) {
     case SET_WEATHER_DATA: {
       return {
         ...state,
-        weather: [action.weather],
+        weather: action.weather,
         name: action.name,
         sys: action.sys,
         temp: action.temp
       }
     }
-    case 'SET_WEATHER_HISTORY':{
+    case SET_WEATHER_HISTORY: {
       return {
         ...state,
-        weatherHistory: [action.weatherHistory]
+        weatherHistory: action.weatherHistory
       }
     }
     default:
@@ -50,7 +60,7 @@ export const WeatherReducer = (state = initialState, action: ActionsType):Initia
 type ActionsType = InferActionTypes<typeof actions>
 
 const actions = {
-  setWeatherDataSuccess: (weather: weather, name: string, sys: sys, temp: temp) => {
+  setWeatherDataSuccess: (weather: Array<Weather>, name: string, sys: Sys, temp: Main) => {
     return {
       type: SET_WEATHER_DATA,
       weather,
@@ -59,7 +69,7 @@ const actions = {
       temp
     } as const
   },
-  setWeatherHistorySuccess: (weatherHistory: WeatherHistory) => {
+  setWeatherHistorySuccess: (weatherHistory: Array<WeatherHistory>) => {
     return {
       type: SET_WEATHER_HISTORY,
       weatherHistory
@@ -79,22 +89,19 @@ export const getCityWeather = (cityName: string) => async (dispatch: Dispatch<Ac
     minutes: date.getMinutes(),
     id: date.getSeconds()
   }
-  try {
-    let data = await getWeatherApi.getWeather(cityName);
-    const {weather, name, sys, main} = data
 
-    const weatherData = {weather, name, sys, main, datesInfo}
+  let data = await getWeatherApi.getWeather(cityName);
+  const {weather, name, sys, main} = data
 
-    await jsonServerApi.setWeatherData(weatherData);
-    dispatch(actions.setWeatherDataSuccess(weather, name, sys, main));
-  } catch (e) {
-    alert(e.message)
-  }
+  const weatherData = {weather, name, sys, main, datesInfo}
+
+  await jsonServerApi.setWeatherData(weatherData);
+  dispatch(actions.setWeatherDataSuccess(weather, name, sys, main));
+
 };
 
 
 export const getHistoryWeather = () => async (dispatch: Dispatch<ActionsType>) => {
   let data = await jsonServerApi.getWeatherData();
-  console.log(data)
   dispatch(actions.setWeatherHistorySuccess(data))
 }
