@@ -6,8 +6,26 @@ import {Route, Switch} from 'react-router-dom';
 import History from './c3- history/History';
 
 function App() {
+
+  const check = function () {
+    const theTime = new Date();
+    const theHour = theTime.getHours();
+
+    if (theHour > 6 && theHour < 12) {
+      return style.morning
+    } else if (theHour > 12 && theHour < 18) {
+      return style.day
+    } else if (theHour > 18 && theHour < 24) {
+      return style.evening
+    } else if (theHour < 6) {
+      return style.night
+    }
+  }
+
+  setInterval(check, 30000);
+
   return (
-    <div className={style.appWrapper}>
+    <div className={check()}>
       <Header/>
       <div>
         <Switch>

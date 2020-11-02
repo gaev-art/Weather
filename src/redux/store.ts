@@ -15,7 +15,6 @@ export type AppStateType = ReturnType<typeof rootReducer>
 
 export type InferActionTypes<T> = T extends { [keys: string]: (...args: any[]) => infer U } ? U : never
 
-export let store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
-
-
 export const useAppSelector: TypedUseSelectorHook<AppStateType> = useSelector
+
+export let store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));

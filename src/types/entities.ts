@@ -1,35 +1,31 @@
-export type Main = {
-  temp: number
-  feels_like: number
-  temp_min: number
-  temp_max: number
-  pressure: number
-  humidity: number
-}
-
-export type Sys = {
-  type: number
-  id: number
-  message: number
-  country: string
-  sunrise: number
-  sunset: number
-}
-export type Weather = {
-  id: number
-  main: string
-  description: string
-  icon: string
-}
-
 export type LocationWeather = {
+  weather: Weather
+}
+
+export type Weather = {
+  _id: string
+  _v?: number
   coord: {
     lon: number
     lat: number
   },
-  weather: [Weather],
+  weather: [
+    {
+      id: number
+      main: string
+      description: string
+      icon: string
+    }
+  ],
   base: string
-  main: Main,
+  main: {
+    temp: number
+    feels_like: number
+    temp_min: number
+    temp_max: number
+    pressure: number
+    humidity: number
+  },
   visibility: number
   wind: {
     speed: number
@@ -39,10 +35,15 @@ export type LocationWeather = {
     all: number
   },
   dt: number
-  sys: Sys,
+  sys: {
+    type: number
+    id: number
+    country: string
+    sunrise: number
+    sunset: number
+  },
   timezone: number
   id: number
   name: string
   cod: number
 }
-

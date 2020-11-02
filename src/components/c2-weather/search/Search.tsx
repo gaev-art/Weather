@@ -21,7 +21,7 @@ export default function Search() {
     <form onSubmit={getWeatherInCity}>
       <TextField
         label="Enter City"
-        color="secondary"
+        color="primary"
         value={city}
         onChange={handleWordSearchChange}
       />

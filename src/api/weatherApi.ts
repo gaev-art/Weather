@@ -1,34 +1,31 @@
-import axios from 'axios';
-import {LocationWeather} from '../types/entities';
+import axios from 'axios'
+import {LocationWeather, Weather} from '../types/entities'
 
-
-const KEY = process.env.REACT_APP_KEY_FOR_WEATHER
-
-const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL
-})
 
 export const getWeatherApi = {
   getWeather(cityName: string) {
     return axios.get<LocationWeather>(
-      `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&apikey=${KEY}&lang=ru&units=metric`)
-      .then(response => response.data)
-
-  }
-};
-
-
-export const jsonServerApi = {
-  setWeatherData(weathers: any) {
-    return instance.post('/weather',
-      weathers)
-      .then((res) => res)
+      // `http://localhost:3030/weather?city=${cityName}`)
+      // `https://server-4-weather.herokuapp.com/weather?city=${cityName}`)
+      `https://protected-beyond-90978.herokuapp.com/weather?city=${cityName}`)
+      .then(response => {
+        return response.data
+      })
   },
-  getWeatherData() {
-    return instance.get('/weather',)
-      .then((res) => res.data)
+  getHistoryWeather() {
+    return axios.get<Weather[]>(
+      // `http://localhost:3030/history`)
+      // `https://server-4-weather.herokuapp.com/history`)
+      `https://protected-beyond-90978.herokuapp.com/history`)
+      .then(response => {
+        return response.data
+      })
   },
+
 }
+
+
+
 
 
 

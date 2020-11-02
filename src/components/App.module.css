@@ -1,15 +1,25 @@
-.appWrapper {
-  display: grid;
-  margin: 0 auto;
-  grid-template-areas:"h" "c";
-
-  grid-template-rows: 70px 1fr;
-
+.morning{
+  background-image: url('../assets/images/1.png');
+  /*background-size: cover;*/
+  background-position: center;
+  background-repeat: no-repeat;
 }
-
-.appWrapperContent {
-  grid-area: c;
-  text-align: center;
-
+.day{
+  background-image: url('../assets/images/2.png');
+  /*background-size: cover;*/
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.evening{
+  background-image: url('../assets/images/3.png');
+  /*background-size: cover;*/
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.night{
+  background-image: url('../assets/images/4.png');
+  /*background-size: cover;*/
+  background-position: center;
+  background-repeat: no-repeat;
 }
 

@@ -1,11 +1,21 @@
 .container {
   display: flex;
   justify-content: center;
+  height: 100vh;
+  /*position: relative;*/
 
 }
 
 .item {
-  margin: 30px;
+  /*color: white;*/
+  background-color: white;
+  opacity: 0.6;
+  margin-top: 100px;
+  height: 200px;
+  /*position: absolute;*/
+  /*top: 100px;*/
+  /*left: 400px;*/
+
 
 }
 
