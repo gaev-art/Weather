@@ -9,7 +9,8 @@ export default function Search() {
 
   const [city, setCity] = useState('')
 
-  const getWeatherInCity = () => {
+  const getWeatherInCity = (e:any) => {
+    e.preventDefault();
     dispatch(getCityWeather(city))
     setCity('')
   }

@@ -1,7 +1,7 @@
 {
   "name": "weather",
   "version": "0.1.0",
-  "homepage":"https://gaev-art.github.io/Weather",
+  "homepage": "https://gaev-art.github.io/Weather",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.0",
@@ -16,6 +16,7 @@
     "@types/react-redux": "^7.1.9",
     "@types/react-router-dom": "^5.1.6",
     "axios": "^0.20.0",
+    "gh-pages": "^4.0.0",
     "material-ui": "^0.20.2",
     "moment": "^2.29.1",
     "react": "^16.13.1",
@@ -33,7 +34,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "predeploy": "npm run build",
+    "predeploy": "yarn run build",
     "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
